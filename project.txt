@@ -1,0 +1,70 @@
+Bahut badhiya Aditya 🔥 — ab hum **advanced RAG retriever techniques** jaise **HYDE** aur **Rewritten Queries** ko detail mein samajhte hain, aur kab kaunsa use karna chahiye.  
+
+---
+
+## ⚙️ 1. HYDE (Hypothetical Document Embeddings)
+
+### 🧠 Concept:
+HYDE ka matlab hai **Hypothetical Document Embeddings**.  
+Instead of directly searching with the user query, model pehle ek **hypothetical answer** 
+generate karta hai — jaise ek “imagined document” — aur uska embedding banata hai.  
+Phir ye embedding use hoti hai **vector search** mein relevant documents dhoondhne ke liye.
+
+### 🔍 Example:
+User query: *“What are the benefits of a ketogenic diet?”*  
+HYDE step:
+1. LLM generates a short hypothetical answer:  
+   *“A ketogenic diet helps with weight loss and mental clarity.”*  
+2. Is generated text ka embedding banaya jaata hai.  
+3. Vector DB mein search hoti hai using this embedding — ye usually **better semantic match**
+ deta hai than raw query.
+
+### 🧩 When to Use:
+- Jab **user query vague** ho (e.g., “Explain RAG in detail” — bahut open-ended).  
+- Jab **retriever ko domain vocabulary** samajhne mein dikkat ho.  
+- Jab **semantic gap** ho between query and document language.  
+👉 HYDE helps bridge that gap by generating a “proxy document” that captures intent.
+
+---
+
+## ✍️ 2. Rewritten Queries
+
+### 🧠 Concept:
+Rewritten Queries technique mein model **query ko reformulate** karta hai — multiple variations banata
+ hai taaki retriever ko zyada coverage mile.  
+Ye **MultiQuery Retriever** ka advanced form hai.
+
+### 🔍 Example:
+Original query: *“RAG pipeline optimization”*  
+Rewritten queries:
+- “How to improve RAG pipeline performance”  
+- “Best practices for RAG retriever tuning”  
+- “Optimizing retrieval in RAG architecture”  
+
+Phir har rewritten query ka embedding banaya jaata hai aur combined results liye jaate hain.
+
+### 🧩 When to Use:
+- Jab **domain vocabulary diverse** ho (manufacturing docs mein “BOM” vs “Bill of Materials”).  
+- Jab **retrieval recall** badhaana ho — i.e., zyada relevant docs chahiye.  
+- Jab **user query short** ho aur context missing ho.
+
+---
+
+## ⚖️ Comparison Table
+
+| Technique | Core Idea | Best For | Output Quality | Typical Use Case |
+|------------|------------|-----------|----------------|------------------|
+| **HYDE** | Generate hypothetical answer → embed | Vague or abstract queries | High precision | Semantic-heavy domains (research, compliance) |
+| **Rewritten Queries** | Reformulate query in multiple ways | Diverse terminology | High recall | Technical docs, multi-domain corpora |
+
+---
+
+## 🧠 Pro Tip (Hybrid Use)
+Kabhi kabhi dono combine karna best hota hai:
+- Pehle **HYDE** se hypothetical doc generate karo.  
+- Phir us doc ke key phrases se **Rewritten Queries** banao.  
+Ye combo deta hai **semantic depth + lexical diversity** — perfect for enterprise RAG setups (like SAP/Windchill manuals).
+
+---
+
+Agar tum chaho, main ek **visual flow diagram** bana sakta hoon jisme HYDE aur Rewritten Queries dono ka retriever path side-by-side dikhaya gaya ho — ek “semantic imagination” aur ek “query expansion” ke form mein. Bana doon?
